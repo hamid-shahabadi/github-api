@@ -4,7 +4,7 @@ import "./SearchResults.css";
 function SearchResults(props) {
   const [languages, setLanguages] = React.useState([]);
   var topLanguages = [];
-  var LastUpdatedDate = new Date (props.lastUpdated);
+  var LastUpdatedDate = new Date(props.lastUpdated);
 
   React.useEffect(() => {
     getLanguages();
@@ -15,12 +15,15 @@ function SearchResults(props) {
     await fetch(
       `https://api.github.com/repos/${props.username}/${props.repoName}/languages`
     )
-    .then((response) => {
-      if(!response.ok){
-        throw Error(`Could not fetch the top langauges for https://api.github.com/repos/${props.username}/${props.repoName}/languages.`)
-      }
-      return response.json()
-    }).then (data => setLanguages(data)) 
+      .then((response) => {
+        if (!response.ok) {
+          throw Error(
+            `Could not fetch the top langauges for https://api.github.com/repos/${props.username}/${props.repoName}/languages.`
+          );
+        }
+        return response.json();
+      })
+      .then((data) => setLanguages(data))
       .catch((error) => {
         console.log(error);
       });
@@ -35,7 +38,6 @@ function SearchResults(props) {
     counter++;
   }
 
-
   return (
     <div
       className="search-results m-2 p-2 border border-dark rounded"
@@ -45,7 +47,9 @@ function SearchResults(props) {
         <div className="row">
           <div className="col-md-8">
             <h2 className="repoName">{props.repoName}</h2>
-            <p className="lastUpdated">updated: {LastUpdatedDate.toString().slice(4, 21)}</p>
+            <p className="lastUpdated">
+              updated: {LastUpdatedDate.toString().slice(4, 21)}
+            </p>
             <p className="C">{props.description}</p>
           </div>
           <div className="languages col-md-4">

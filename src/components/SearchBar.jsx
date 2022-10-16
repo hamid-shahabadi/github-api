@@ -16,9 +16,7 @@ function SearchBar(props) {
 
   async function getRepos() {
     setLoading(true);
-    await fetch(
-      `https://api.github.com/users/${props.username}/repos`
-    )
+    await fetch(`https://api.github.com/users/${props.username}/repos`)
       .then((response) => {
         if (!response.ok) {
           throw Error(
@@ -53,7 +51,9 @@ function SearchBar(props) {
         <button className="btn btn-primary mx-2 ">Search</button>
 
         {/* prints error message if it could not fetch the specified user or org from the api*/}
-        {error && !loading && props.displayName && <p className="text-danger px-2">{error}</p>}
+        {error && !loading && props.displayName && (
+          <p className="text-danger px-2">{error}</p>
+        )}
 
         {/* user or organization exists, but does doesn't have any public repositories*/}
         {!error &&
@@ -70,5 +70,3 @@ function SearchBar(props) {
 }
 
 export default SearchBar;
-
-//start editing here 3

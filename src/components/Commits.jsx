@@ -5,7 +5,6 @@ function Commits(props) {
   const [commits, setCommits] = React.useState([]);
   var listOfCommits = [];
 
-
   React.useEffect(() => {
     getCommits();
   });
@@ -50,14 +49,9 @@ function Commits(props) {
   return (
     <div className="commits p-0">
       <h2 className="p-2 my-2">Commits for {props.selectedRepo}</h2>
-
-
-
       {listOfCommits}
     </div>
   );
 }
 
 export default Commits;
-
-//starting point - trying to display max 20 commits

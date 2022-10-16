@@ -11,7 +11,6 @@ function App() {
   const [displayName, setDisplayName] = React.useState("");
   const [selectedRepo, setSelectedRepo] = React.useState("");
 
-
   let repos = [];
   if (Array.isArray(reposResults)) {
     repos = reposResults.map((repo) => (
@@ -35,7 +34,7 @@ function App() {
   }
 
   // when user clicks the user name in the bread crumbs of the repo commits page it will deselect 
-  // the current repo and take them back to the search results for the selected username
+  // the current repo and take them back to the search results for the selected user/organization
   function toSearchResults(){
     setSelectedRepo("")
   } 
@@ -59,18 +58,15 @@ function App() {
             displayName = {displayName}
           />
 
-
           {/* bread crumbs */}
           <div className="breadCrumbs">
             {displayName && !selectedRepo && <p> <button className="btn p-0" onClick={toHome}>home</button> {">"} {displayName}</p>}
             {selectedRepo && <p> <button className="btn p-0" onClick={toHome}>home</button> {">"} <button className="btn p-0" onClick={toSearchResults}> {displayName} </button> {">"} {selectedRepo}</p>}
           </div>
 
-
           {/* search results  */}
           {displayName && !selectedRepo &&  reposResults.length > 0 && <h2> Repos for {displayName}</h2>}
           
-
           {!selectedRepo && repos}
 
           {/* repo commits */}
@@ -84,5 +80,3 @@ function App() {
 }
 
 export default App;
-
-// start editing here wirking starting links to back steps

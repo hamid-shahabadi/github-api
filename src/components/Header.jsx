@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css"
+import "./Header.css";
 
 function Header(props) {
   return (
@@ -9,7 +9,8 @@ function Header(props) {
           <div className="col-md-1 col-3 p-0">
             <img
               className="github-logo"
-              src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="github-logo"
+              src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+              alt="github-logo"
             />
           </div>
           <div className="col-md-11 col-9 ">
