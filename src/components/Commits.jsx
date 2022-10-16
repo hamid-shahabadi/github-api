@@ -15,9 +15,22 @@ function Commits(props) {
       `https://api.github.com/repos/${props.username}/${props.selectedRepo}/commits`
     )
     .then((response) => {
-      if(!response.ok){
-        throw Error(`could not fetch commits for https://api.github.com/repos/${props.username}/${props.selectedRepo}`)
+
+      if (!response.ok) {
+        if (response.status === 403) {
+          throw Error(
+            `error 403 - api call limit exceeded. please try again in a few minutes`
+          );
+        } else if (response.status === 404) {
+          throw Error(
+            `could not fetch commits for https://api.github.com/repos/${props.username}/${props.selectedRepo}`
+          );
+        } else {
+          throw Error(`error - ${response.status}`);
+        }
       }
+      
+
       return response.json()
     })
       .then( data => setCommits(data)

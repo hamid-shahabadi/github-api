@@ -19,9 +19,17 @@ function SearchBar(props) {
     await fetch(`https://api.github.com/users/${props.username}/repos`)
       .then((response) => {
         if (!response.ok) {
-          throw Error(
-            `Could not find "${props.username}". please try another user or organization`
-          );
+          if (response.status === 403) {
+            throw Error(
+              `error 403 - api call limit exceeded. please try again in a few minutes`
+            );
+          } else if (response.status === 404) {
+            throw Error(
+              `Could not find "${props.username}". please try another user or organization`
+            );
+          } else {
+            throw Error(`error - ${response.status}`);
+          }
         }
         return response.json();
       })

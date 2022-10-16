@@ -17,10 +17,19 @@ function SearchResults(props) {
     )
       .then((response) => {
         if (!response.ok) {
-          throw Error(
-            `Could not fetch the top langauges for https://api.github.com/repos/${props.username}/${props.repoName}/languages.`
-          );
+          if (response.status === 403) {
+            throw Error(
+              `error 403 - api call limit exceeded. please try again in a few minutes`
+            );
+          } else if (response.status === 404) {
+            throw Error(
+              `Could not fetch the top langauges for https://api.github.com/repos/${props.username}/${props.repoName}/languages.`
+            );
+          } else {
+            throw Error(`error - ${response.status}`);
+          }
         }
+
         return response.json();
       })
       .then((data) => setLanguages(data))
