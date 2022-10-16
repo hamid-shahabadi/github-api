@@ -1,0 +1,21 @@
+*{
+  font-family: "Comic Sans MS", "Comic Sans", cursive;
+}
+
+.resetSearch{
+  color: blue;
+  cursor: pointer;
+}
+
+.resetSearch:hover{
+  text-decoration: underline;
+}
+
+.breadCrumbs button{
+  color: blue;
+}
+
+.breadCrumbs button:hover, .breadCrumbs button:active{
+  color: blue;
+  text-decoration: underline;
+}

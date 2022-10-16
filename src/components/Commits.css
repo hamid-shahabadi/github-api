@@ -1,0 +1,17 @@
+.commit-tile:active, .commit-tile:hover{
+    box-shadow: 0 0 10px blue;
+    cursor: pointer;
+    color: black;
+} 
+
+.commit-tile{
+    text-decoration: none;
+    color: black;
+}
+
+.lastUpdated{
+    font-size: 14px;
+    color: grey;
+}
+
+

@@ -1,0 +1,18 @@
+.topLang{
+    background: lightgray;
+}
+
+
+.search-results:hover, .search-results:active{
+    box-shadow: 0 0 10px blue;
+    cursor: pointer;
+}
+
+.lastUpdated{
+    font-size: 14px;
+    color: grey;
+}
+
+.languages {
+    text-align: right;
+}
