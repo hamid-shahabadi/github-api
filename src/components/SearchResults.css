@@ -4,7 +4,7 @@
 
 
 .search-results:hover, .search-results:active{
-    box-shadow: 0 0 10px blue;
+    box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.644);
     cursor: pointer;
 }
 
